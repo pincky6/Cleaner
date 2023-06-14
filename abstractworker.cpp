@@ -18,9 +18,16 @@ void AbstractWorker::wait()
     emit finished();
     while(thread.isRunning());
 }
+
+void AbstractWorker::stopThread()
+{
+    setRunning(false);
+    wait();
+}
+
 AbstractWorker::~AbstractWorker()
 {
-
+    stopThread();
 }
 
 void AbstractWorker::whileRun()

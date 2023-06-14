@@ -28,8 +28,6 @@ protected:
     void setWorker(AbstractWorker*);
 
     virtual void search(QString);
-private:
-    void stopThread();
 protected slots:
     void findInputString(QString);
 signals:

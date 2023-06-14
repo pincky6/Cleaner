@@ -15,6 +15,8 @@ public:
     void setRunning(bool);
     void wait();
     virtual ~AbstractWorker();
+private:
+    void stopThread();
 signals:
     void finished();
 public slots:

@@ -13,15 +13,10 @@ AbstractManager::AbstractManager(QWidget *parent) :
     connect(this, &AbstractManager::sendDeletedSearchString, ui->searchWidget, &SearchWidget::deleteSearchString);
     connect(ui->searchWidget, &SearchWidget::sendSearchString, this, &AbstractManager::findInputString);
 }
-void AbstractManager::stopThread()
-{
-    worker->setRunning(false);
-    worker->wait();
-}
+
 
 AbstractManager::~AbstractManager()
 {
-    stopThread();
     delete worker;
     delete ui;
 }
