@@ -13,6 +13,7 @@ public:
     AbstractCheckableManager(AbstractManager* parent = nullptr);
     virtual void checkAll() = 0;
     virtual void deleteChecked() = 0;
+    virtual ~AbstractCheckableManager();
 public slots:
     void checkAllItems();
     void deleteCheckedPaths();

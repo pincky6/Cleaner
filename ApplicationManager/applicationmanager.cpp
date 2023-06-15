@@ -61,4 +61,3 @@ void ApplicationManager::deleteButtonPressed(QString uninstallString)
 ApplicationManager::~ApplicationManager()
 {
 }
-

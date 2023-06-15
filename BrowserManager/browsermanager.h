@@ -3,7 +3,7 @@
 #define BROWSERMANAGER_H
 
 #include "abstractcheckablemanager.h"
-
+#include "browserinfoitem.h"
 #include <QString>
 
 class QVBoxLayout;
@@ -18,6 +18,9 @@ public:
     void deleteChecked() override;
 signals:
     void sendBrowserMember(QString, QString, QString);
+private slots:
+    void addWidgetToScrollArea( const std::size_t, BrowserInfoItem);
+    void deleteWidgetFromScrollArea(AbstractInfoWidget*);
 private:
     QVBoxLayout* verticalLayout;
 };

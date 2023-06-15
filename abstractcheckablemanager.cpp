@@ -26,3 +26,5 @@ void AbstractCheckableManager::deleteCheckedPaths()
     deleteChecked();
 }
 
+AbstractCheckableManager::~AbstractCheckableManager()
+{}

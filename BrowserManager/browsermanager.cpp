@@ -1,7 +1,8 @@
-#include "browsermanager.h"
-#include "browserinfowidget.h"
-#include "registryquery.h"
+#include "browsermanagerworker.h"
 #include "ui_abstractmanager.h"
+#include "browserinfowidget.h"
+#include "browsermanager.h"
+#include "registryquery.h"
 
 #include <QVBoxLayout>
 
@@ -9,6 +10,12 @@ BrowserManager::BrowserManager(AbstractCheckableManager * parent):
     AbstractCheckableManager(parent)
 {
     verticalLayout = new QVBoxLayout;
+    worker = new BrowserManagerWorker(infoWidgetVector);
+    connect(ui->searchWidget, &SearchWidget::updateManager, worker, &AbstractWorker::run);
+    connect(dynamic_cast<BrowserManagerWorker*>(worker), &BrowserManagerWorker::sendNewApplicationInfo,
+            this, &BrowserManager::addWidgetToScrollArea);
+    connect(dynamic_cast<BrowserManagerWorker*>(worker), &BrowserManagerWorker::sendDeletedApplicationWidget,
+            this, &BrowserManager::deleteWidgetFromScrollArea);
 }
 
 void BrowserManager::initInfoWidgets()
@@ -25,6 +32,24 @@ void BrowserManager::initInfoWidgets()
     ui->searchWidget->setNewStringList(wordList);
     ui->scrollAreaWidgetContents->setLayout(verticalLayout);
 }
+
+void BrowserManager::addWidgetToScrollArea(const std::size_t position, BrowserInfoItem infoItem)
+{
+    addStringToSearchWidget(infoItem.name);
+    BrowserInfoWidget* browserInfoWidget = new BrowserInfoWidget(new BrowserInfoItem(std::move(infoItem)));
+    verticalLayout->insertWidget(position, browserInfoWidget);
+    infoWidgetVector.push_back(browserInfoWidget);
+    ui->scrollAreaWidgetContents->updateGeometry();
+}
+
+void BrowserManager::deleteWidgetFromScrollArea(AbstractInfoWidget* abstractInfoWidget)
+{
+    deleteStringFromSearchWidget(dynamic_cast<BrowserInfoWidget*>(abstractInfoWidget)->getName());
+    verticalLayout->removeWidget(abstractInfoWidget);
+    infoWidgetVector.erase(std::remove(infoWidgetVector.begin(), infoWidgetVector.end(), abstractInfoWidget));
+    delete abstractInfoWidget;
+}
+
 
 void BrowserManager::checkAll()
 {

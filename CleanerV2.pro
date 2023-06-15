@@ -16,6 +16,7 @@ SOURCES += \
     BrowserManager/browserinfoitem.cpp \
     BrowserManager/browserinfowidget.cpp \
     BrowserManager/browsermanager.cpp \
+    BrowserManager/browsermanagerworker.cpp \
     abstractcheckablemanager.cpp \
     abstractinfowidget.cpp \
     abstractmanager.cpp \
@@ -33,6 +34,7 @@ HEADERS += \
     BrowserManager/browserinfoitem.h \
     BrowserManager/browserinfowidget.h \
     BrowserManager/browsermanager.h \
+    BrowserManager/browsermanagerworker.h \
     abstractcheckablemanager.h \
     abstractinfoitem.h \
     abstractinfowidget.h \
