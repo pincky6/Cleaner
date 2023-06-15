@@ -1,12 +1,13 @@
 #include "applicationinfowidget.h"
 #include "ui_abstractinfowidget.h"
+#include "applicationinfoitem.h"
 
 #include <QPushButton>
 
 ApplicationInfoWidget::ApplicationInfoWidget(ApplicationInfoItem* applicationInfoItem_, AbstractInfoWidget* parent):
-    AbstractInfoWidget(applicationInfoItem_->applicationName + "\n" +
-                           applicationInfoItem_->applicationCreators + " | " + applicationInfoItem_->applicationVersion,
-                       applicationInfoItem_->applicationIconPath , applicationInfoItem_, parent)
+    AbstractInfoWidget(applicationInfoItem_->name + "\n" +
+                           applicationInfoItem_->creators + " | " + applicationInfoItem_->version,
+                       applicationInfoItem_->iconPath , applicationInfoItem_, parent)
 
 {
     QPushButton* deleteButton = new QPushButton("Delete", this);
@@ -26,31 +27,31 @@ bool ApplicationInfoWidget::compareInfoItem(const AbstractInfoItem* otherInfoIte
 
 const QString &ApplicationInfoWidget::getName() const
 {
-    return dynamic_cast<ApplicationInfoItem*>(infoItem)->applicationName;
+    return dynamic_cast<ApplicationInfoItem*>(infoItem)->name;
 }
 
 const QString &ApplicationInfoWidget::getVersion() const
 {
-    return dynamic_cast<ApplicationInfoItem*>(infoItem)->applicationVersion;
+    return dynamic_cast<ApplicationInfoItem*>(infoItem)->version;
 }
 
 const QString &ApplicationInfoWidget::getIconPath() const
 {
-    return dynamic_cast<ApplicationInfoItem*>(infoItem)->applicationIconPath;
+    return dynamic_cast<ApplicationInfoItem*>(infoItem)->iconPath;
 }
 
 const QString &ApplicationInfoWidget::getCreators() const
 {
-    return dynamic_cast<ApplicationInfoItem*>(infoItem)->applicationCreators;
+    return dynamic_cast<ApplicationInfoItem*>(infoItem)->creators;
 }
 
 const QString &ApplicationInfoWidget::getUninstallString() const
 {
-    return dynamic_cast<ApplicationInfoItem*>(infoItem)->applicationUninstallString;
+    return dynamic_cast<ApplicationInfoItem*>(infoItem)->uninstallString;
 }
 
 void ApplicationInfoWidget::deleteButtonPressed()
 {
-    emit sendUninstallString(dynamic_cast<ApplicationInfoItem*>(infoItem)->applicationUninstallString);
+    emit sendUninstallString(dynamic_cast<ApplicationInfoItem*>(infoItem)->uninstallString);
 }
 

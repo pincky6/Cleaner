@@ -8,7 +8,6 @@ AbstractManager::AbstractManager(QWidget *parent) :
     ui(new Ui::AbstractManager)
 {
     ui->setupUi(this);
-    verticalLayout = new QVBoxLayout;
     connect(this, &AbstractManager::sendNewSearchString, ui->searchWidget, &SearchWidget::addSearchString);
     connect(this, &AbstractManager::sendDeletedSearchString, ui->searchWidget, &SearchWidget::deleteSearchString);
     connect(ui->searchWidget, &SearchWidget::sendSearchString, this, &AbstractManager::findInputString);
@@ -20,6 +19,8 @@ AbstractManager::~AbstractManager()
     delete worker;
     delete ui;
 }
+
+
 
 void AbstractManager::addStringToSearchWidget(QString name)
 {

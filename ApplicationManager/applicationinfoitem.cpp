@@ -2,12 +2,12 @@
 
 
 
-ApplicationInfoItem::ApplicationInfoItem(const QString& applicationName_, const QString& applicationVersion_,
-                                         const QString& applicationIconPath_, const QString& applicationCreators_,
-                                         const QString& applicationUninstallString_):
-    applicationName(applicationName_), applicationVersion(applicationVersion_),
-    applicationIconPath(applicationIconPath_), applicationCreators(applicationCreators_),
-    applicationUninstallString(applicationUninstallString_)
+ApplicationInfoItem::ApplicationInfoItem(const QString& name_, const QString& version_,
+                                         const QString& iconPath_, const QString& creators_,
+                                         const QString& uninstallString_):
+    name(name_), version(version_),
+    iconPath(iconPath_), creators(creators_),
+    uninstallString(uninstallString_)
 
 {}
 
@@ -16,9 +16,9 @@ bool ApplicationInfoItem::operator==(const AbstractInfoItem* other) const
     const ApplicationInfoItem* infoItem = dynamic_cast<const ApplicationInfoItem*>(other);
     if(infoItem == nullptr)
         throw std::logic_error("Compare difference info item type");
-    return infoItem->applicationName == applicationName && infoItem->applicationCreators == applicationCreators &&
-           infoItem->applicationVersion == applicationVersion && infoItem->applicationUninstallString == applicationUninstallString &&
-           infoItem->applicationIconPath == applicationIconPath;
+    return infoItem->name == name && infoItem->creators == creators &&
+           infoItem->version == version && infoItem->uninstallString == uninstallString &&
+           infoItem->iconPath == iconPath;
 }
 
 bool ApplicationInfoItem::operator!=(const AbstractInfoItem* other) const
@@ -26,10 +26,11 @@ bool ApplicationInfoItem::operator!=(const AbstractInfoItem* other) const
     return !(*this == other);
 }
 
+
 bool ApplicationInfoItem::isEmpty() const
 {
-    return applicationName.isEmpty() && applicationCreators.isEmpty() &&
-           applicationVersion.isEmpty() && applicationUninstallString.isEmpty() &&
-             applicationIconPath.isEmpty();
+    return name.isEmpty() && creators.isEmpty() &&
+           version.isEmpty() && uninstallString.isEmpty() &&
+             iconPath.isEmpty();
 }
 

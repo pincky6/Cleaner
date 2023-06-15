@@ -13,7 +13,10 @@ SOURCES += \
     ApplicationManager/applicationinfowidget.cpp \
     ApplicationManager/applicationmanager.cpp \
     ApplicationManager/applicationmanagerworker.cpp \
-    abstractinfoitem.cpp \
+    BrowserManager/browserinfoitem.cpp \
+    BrowserManager/browserinfowidget.cpp \
+    BrowserManager/browsermanager.cpp \
+    abstractcheckablemanager.cpp \
     abstractinfowidget.cpp \
     abstractmanager.cpp \
     abstractworker.cpp \
@@ -27,6 +30,10 @@ HEADERS += \
     ApplicationManager/applicationinfowidget.h \
     ApplicationManager/applicationmanager.h \
     ApplicationManager/applicationmanagerworker.h \
+    BrowserManager/browserinfoitem.h \
+    BrowserManager/browserinfowidget.h \
+    BrowserManager/browsermanager.h \
+    abstractcheckablemanager.h \
     abstractinfoitem.h \
     abstractinfowidget.h \
     abstractmanager.h \

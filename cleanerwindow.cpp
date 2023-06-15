@@ -8,6 +8,8 @@ CleanerWindow::CleanerWindow(QWidget *parent)
 {
     ui->setupUi(this);
 //    connect() для taskQueue
+    ui->applicationManager->initInfoWidgets();
+    ui->browserManager->initInfoWidgets();
 }
 
 CleanerWindow::~CleanerWindow()

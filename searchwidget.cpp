@@ -1,5 +1,5 @@
 #include "searchwidget.h"
-#include "ui_searchedwidget.h"
+#include "ui_searchwidget.h"
 
 #include <QCompleter>
 #include <QKeyEvent>

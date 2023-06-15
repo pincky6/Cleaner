@@ -9,7 +9,7 @@
 ApplicationManager::ApplicationManager(AbstractManager* parent):
     AbstractManager(parent)
 {
-    initInfoWidgets();
+    verticalLayout = new QVBoxLayout;
     worker = new ApplicationManagerWorker(infoWidgetVector);
     connect(ui->searchWidget, &SearchWidget::updateManager, worker, &AbstractWorker::run);
     connect(dynamic_cast<ApplicationManagerWorker*>(worker), &ApplicationManagerWorker::sendNewApplicationInfo,
@@ -24,7 +24,7 @@ void ApplicationManager::initInfoWidgets()
     QStringList wordList;
     for(auto applicationInfo: applicationsInfo)
     {
-        wordList << applicationInfo->applicationName;
+        wordList << applicationInfo->name;
         ApplicationInfoWidget* applicationInfoWidget = new ApplicationInfoWidget(applicationInfo);
         connect(applicationInfoWidget, &ApplicationInfoWidget::sendUninstallString, this, &ApplicationManager::deleteButtonPressed);
         infoWidgetVector.push_back(applicationInfoWidget);
@@ -36,7 +36,7 @@ void ApplicationManager::initInfoWidgets()
 
 void ApplicationManager::addWidgetToScrollArea(const std::size_t position, ApplicationInfoItem infoItem)
 {
-    addStringToSearchWidget(infoItem.applicationName);
+    addStringToSearchWidget(infoItem.name);
     ApplicationInfoWidget* applicationInfoWidget = new ApplicationInfoWidget(new ApplicationInfoItem(std::move(infoItem)));
     verticalLayout->insertWidget(position, applicationInfoWidget);
     infoWidgetVector.push_back(applicationInfoWidget);

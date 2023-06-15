@@ -13,7 +13,6 @@ ApplicationManagerWorker::ApplicationManagerWorker(const std::vector<AbstractInf
 
 void ApplicationManagerWorker::work()
 {
-    qDebug() << "work";
     if(infoWidgetVector.empty())
     {
         return;

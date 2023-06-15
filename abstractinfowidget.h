@@ -9,22 +9,7 @@ namespace Ui {
 class AbstractInfoWidget;
 }
 
-//class UniqueInfoItemPtr
-//{
-//public:
-//    UniqueInfoItemPtr(AbstractInfoItem*);
 
-//    UniqueInfoItemPtr(const UniqueInfoItemPtr&) = delete;
-//    UniqueInfoItemPtr(UniqueInfoItemPtr&&) noexcept;
-
-//    UniqueInfoItemPtr& operator=(const UniqueInfoItemPtr&) = delete;
-//    UniqueInfoItemPtr& operator=(UniqueInfoItemPtr&&) noexcept;
-
-//    AbstractInfoItem* get();
-//    const AbstractInfoItem* get() const;
-
-//    ~UniqueInfoItemPtr();
-//};
 
 class AbstractInfoWidget : public QWidget
 {

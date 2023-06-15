@@ -17,11 +17,11 @@ public:
 
     bool isEmpty() const override;
 public:
-    QString applicationName;
-    QString applicationVersion;
-    QString applicationIconPath;
-    QString applicationCreators;
-    QString applicationUninstallString;
+    QString name;
+    QString version;
+    QString iconPath;
+    QString creators;
+    QString uninstallString;
 };
 
 #endif // APPLICATIONINFOITEM_H

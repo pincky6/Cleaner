@@ -12,7 +12,6 @@ class QCompleter;
 class SearchWidget : public QWidget
 {
     Q_OBJECT
-
 public:
     explicit SearchWidget(QWidget *parent = nullptr, const QStringList& wordList_ = QStringList());
     void keyPressEvent(QKeyEvent *event) override;

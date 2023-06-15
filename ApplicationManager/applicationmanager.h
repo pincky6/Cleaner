@@ -6,7 +6,7 @@
 #include "applicationinfoitem.h"
 
 
-
+class QVBoxLayout;
 
 class ApplicationManager : public AbstractManager
 {
@@ -22,7 +22,8 @@ signals:
     void sendUninstallString(QString);
 private slots:
     void deleteButtonPressed(QString);
-
+private:
+    QVBoxLayout* verticalLayout;
 };
 
 #endif // APPLICATIONMANAGER_H

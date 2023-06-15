@@ -61,7 +61,7 @@
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <widget class="ApplicationManager" name="applicationManager"/>
-      <widget class="QWidget" name="browserManager"/>
+      <widget class="BrowserManager" name="browserManager"/>
      </widget>
     </item>
    </layout>
@@ -83,6 +83,12 @@
    <class>ApplicationManager</class>
    <extends>QWidget</extends>
    <header>ApplicationManager/applicationmanager.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>BrowserManager</class>
+   <extends>QWidget</extends>
+   <header>BrowserManager/browsermanager.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

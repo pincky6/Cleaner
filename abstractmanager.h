@@ -28,6 +28,8 @@ protected:
     void setWorker(AbstractWorker*);
 
     virtual void search(QString);
+private:
+    void stopThread();
 protected slots:
     void findInputString(QString);
 signals:
@@ -35,7 +37,6 @@ signals:
     void sendDeletedSearchString(QString);
 protected:
     std::vector<AbstractInfoWidget*> infoWidgetVector;
-    QVBoxLayout* verticalLayout;
     Ui::AbstractManager *ui;
     AbstractWorker* worker;
 };

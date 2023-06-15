@@ -17,7 +17,6 @@ public:
 private:
     void registryApplicationQuery(const QString&, std::vector<ApplicationInfoItem*>&);
 
-    std::vector<BrowserInfoItem*> getBrowsersPath();
     std::map<QString, QString> getBrowserIconPath();
 };
 
