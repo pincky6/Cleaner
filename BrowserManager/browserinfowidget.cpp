@@ -8,8 +8,8 @@ BrowserInfoWidget::BrowserInfoWidget(BrowserInfoItem* browserInfoItem, AbstractI
     AbstractInfoWidget(browserInfoItem->name,
                        browserInfoItem->iconPath , browserInfoItem, parent)
 {
-    QCheckBox* deleteCache = new QCheckBox("Delete cache");
-    QCheckBox* deleteCookies = new QCheckBox("Delete cookies");
+    deleteCache = new QCheckBox("Delete cache");
+    deleteCookies = new QCheckBox("Delete cookies");
     QVBoxLayout* verticalLayout = new QVBoxLayout;
     verticalLayout->addWidget(deleteCache);
     verticalLayout->addWidget(deleteCookies);

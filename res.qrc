@@ -3,6 +3,8 @@
         <file>delete.jpg</file>
         <file>magnifier.png</file>
         <file>restart.jpg</file>
+        <file>globus.png</file>
+        <file>list.png</file>
     </qresource>
     <qresource prefix="/txtFiles">
         <file>browserPaths</file>

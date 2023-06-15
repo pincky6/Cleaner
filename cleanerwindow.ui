@@ -20,13 +20,17 @@
       <item>
        <widget class="QPushButton" name="applicationManagerButton">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+         <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
         <property name="text">
-         <string>PushButton</string>
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="res.qrc">
+          <normaloff>:/images/list.png</normaloff>:/images/list.png</iconset>
         </property>
        </widget>
       </item>
@@ -39,20 +43,11 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>PushButton</string>
+         <string/>
         </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="cacheManagerButton">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>PushButton</string>
+        <property name="icon">
+         <iconset resource="res.qrc">
+          <normaloff>:/images/globus.png</normaloff>:/images/globus.png</iconset>
         </property>
        </widget>
       </item>
@@ -92,6 +87,8 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
  <connections/>
 </ui>

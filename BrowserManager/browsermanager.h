@@ -17,7 +17,7 @@ public:
     void checkAll() override;
     void deleteChecked() override;
 signals:
-    void sendBrowserMember(QString, QString, QString);
+    void sendBrowserMembers(QString, QString, QString);
 private slots:
     void addWidgetToScrollArea( const std::size_t, BrowserInfoItem);
     void deleteWidgetFromScrollArea(AbstractInfoWidget*);

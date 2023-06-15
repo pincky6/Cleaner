@@ -5,6 +5,7 @@
 #include "registryquery.h"
 
 #include <QVBoxLayout>
+#include <QMessageBox>
 
 BrowserManager::BrowserManager(AbstractCheckableManager * parent):
     AbstractCheckableManager(parent)
@@ -20,7 +21,7 @@ BrowserManager::BrowserManager(AbstractCheckableManager * parent):
 
 void BrowserManager::initInfoWidgets()
 {
-    auto browsersInfo = RegistryQuery().getBrowserInfo();
+    std::vector<BrowserInfoItem*> browsersInfo = RegistryQuery().getBrowserInfo();
     QStringList wordList;
     for(auto&& browserInfo: browsersInfo)
     {
@@ -53,26 +54,51 @@ void BrowserManager::deleteWidgetFromScrollArea(AbstractInfoWidget* abstractInfo
 
 void BrowserManager::checkAll()
 {
-    for(auto infoWidget: infoWidgetVector)
+    for(AbstractInfoWidget* browserWidget: infoWidgetVector)
     {
-        dynamic_cast<BrowserInfoWidget*>(infoWidget)->setCacheCheckBox(true);
-        dynamic_cast<BrowserInfoWidget*>(infoWidget)->setCookiesCheckBox(true);
+        BrowserInfoWidget* browserInfoWidget = dynamic_cast<BrowserInfoWidget*>(browserWidget);
+        if(browserInfoWidget != nullptr)
+        {
+            browserInfoWidget->setCacheCheckBox(true);
+            browserInfoWidget->setCookiesCheckBox(true);
+        }
     }
 }
 
 void BrowserManager::deleteChecked()
 {
+    bool findDelete = false;
     for(auto infoWidget: infoWidgetVector)
     {
         BrowserInfoWidget* browserInfoWidget = dynamic_cast<BrowserInfoWidget*>(infoWidget);
         QString cache;
         QString cookies;
         if(browserInfoWidget->cacheCheckBoxChecked())
+        {
             cache = browserInfoWidget->getCachePath();
+            findDelete = true;
+        }
         if(browserInfoWidget->cookiesCheckBoxChecked())
+        {
             cookies = browserInfoWidget->getCookiesPath();
-        emit sendBrowserMember(browserInfoWidget->getName(),
+            findDelete = true;
+        }
+        emit sendBrowserMembers(browserInfoWidget->getName(),
                                cache, cookies);
     }
+    if(findDelete)
+    {
+        QMessageBox::information(this, "All deleted", "All checked path\'s was deleted");
+        for(AbstractInfoWidget* browserWidget: infoWidgetVector)
+        {
+            BrowserInfoWidget* browserInfoWidget = dynamic_cast<BrowserInfoWidget*>(browserWidget);
+            if(browserInfoWidget != nullptr)
+            {
+                browserInfoWidget->setCacheCheckBox(false);
+                browserInfoWidget->setCookiesCheckBox(false);
+            }
+        }
+    }
+
 }
 

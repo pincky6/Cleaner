@@ -17,6 +17,7 @@ SOURCES += \
     BrowserManager/browserinfowidget.cpp \
     BrowserManager/browsermanager.cpp \
     BrowserManager/browsermanagerworker.cpp \
+    MultithreadTask/taskqueue.cpp\
     abstractcheckablemanager.cpp \
     abstractinfowidget.cpp \
     abstractmanager.cpp \
@@ -25,6 +26,7 @@ SOURCES += \
     cleanerwindow.cpp \
     registryquery.cpp \
     searchwidget.cpp\
+    tasks.cpp
 
 HEADERS += \
     ApplicationManager/applicationinfoitem.h \
@@ -35,6 +37,8 @@ HEADERS += \
     BrowserManager/browserinfowidget.h \
     BrowserManager/browsermanager.h \
     BrowserManager/browsermanagerworker.h \
+    MultithreadTask/taskqueue.h\
+    MultithreadTask/task.h\
     abstractcheckablemanager.h \
     abstractinfoitem.h \
     abstractinfowidget.h \
@@ -42,7 +46,8 @@ HEADERS += \
     abstractworker.h \
     cleanerwindow.h \
     registryquery.h \
-    searchwidget.h
+    searchwidget.h \
+    tasks.h
 
 FORMS += \
     abstractinfowidget.ui \
