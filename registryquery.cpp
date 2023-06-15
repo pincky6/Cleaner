@@ -19,7 +19,7 @@ std::vector<ApplicationInfoItem*> RegistryQuery::getApplicationsInfo()
 
 std::vector<BrowserInfoItem *> RegistryQuery::getBrowserInfo()
 {
-    QFile file(":/browserPaths");
+    QFile file(":/txtFiles/browserPaths");
     if(!file.exists())
     {
         abort();
